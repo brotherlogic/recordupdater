@@ -1,0 +1,28 @@
+
+syntax = "proto3";
+
+package recordupdater;
+
+option go_package = "github.com/brotherlogic/recordupdater/proto";
+
+message Update {
+    int32 instance_id = 1;
+    int64 next_update_time = 2;
+    string update_purpose = 3;
+}
+
+message Config {
+    repeated Update updates = 1;
+}
+
+message UpdateRequest {
+    int32 instance_id = 1;
+    int64 update_time = 2;
+    string purpose = 3;
+}
+
+message UpdateResponse {}
+
+service RecordUpdateService {
+    rpc Update(UpdateRequest) returns (UpdateResponse) {};
+}
