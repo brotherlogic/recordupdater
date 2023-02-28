@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: recordupdater
+  namespace: recordupdater
+spec:
+  selector:
+    matchLabels:
+      app: recordupdater
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: recordupdater
+    spec:
+      containers:
+      - name: recordupdater
+        image: registry.brotherlogic-backend.com/brotherlogic/recordupdater:0.56.0 # {"$imagepolicy": "flux-system:recordupdater"}
+        ports:
+        - containerPort: 8080
+    imagePullSecrets:
+      - name: regcred

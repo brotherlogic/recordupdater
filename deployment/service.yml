@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: recordupdater
+  namespace: recordupdater
+  labels:
+    app: recordupdater
+  annotations:
+    traefik.ingress.kuberentes.io/service.serversscheme: h2c
+spec:
+  metadata:
+    labels:
+      app: recordupdater
+  ports:
+    - name: grpc
+      port: 8080
+      targetPort: 8080
+    - name: metrics
+      port: 8081
+      targetPort: 8081
+  selector:
+    app: recordupdater
+  type: ClusterIP
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: recordupdater
+  namespace: monitoring
+  labels:
+    release: kube-prometheus-stack
+spec:
+  endpoints:
+    - port: metrics
+      path: /metrics
+      interval: 30s
+  namespaceSelector:
+    matchNames:
+    - recordupdater
+  selector:
+    matchLabels:
+      app: recordupdater
