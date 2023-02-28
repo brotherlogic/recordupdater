@@ -10,6 +10,7 @@ import (
 	pb "github.com/brotherlogic/recordupdater/proto"
 
 	recordupdater "github.com/brotherlogic/recordupdater/server"
+
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"google.golang.org/grpc"
 )
