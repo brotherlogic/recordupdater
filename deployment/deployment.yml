@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: recordupdater
-        image: registry.brotherlogic-backend.com/brotherlogic/recordupdater:0.2.0 # {"$imagepolicy": "flux-system:recordupdater"}
+        image: registry.brotherlogic-backend.com/brotherlogic/recordupdater:0.3.0 # {"$imagepolicy": "flux-system:recordupdater"}
         ports:
         - containerPort: 8080
       imagePullSecrets:
