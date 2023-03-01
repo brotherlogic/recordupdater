@@ -20,7 +20,7 @@ spec:
       targetPort: 8081
   selector:
     app: recordupdater
-  type: ClusterIP
+  type: NodePort
 ---
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
