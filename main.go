@@ -29,7 +29,7 @@ func main() {
 
 	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", *port))
 	if err != nil {
-		log.Fatalf("failed to listen on port %v: %v", *port, err)
+		log.Fatalf("failed to listen on given port %v: %v", *port, err)
 	}
 	log.Printf("insecure server listening at %v", lis.Addr())
 
